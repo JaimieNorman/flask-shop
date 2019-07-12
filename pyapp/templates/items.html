@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "store-layout.html" %}
 {% block content %}
 
 <div class="row text-center mb-3">
@@ -8,14 +8,14 @@
             <fieldset class="form-group">
                 <div class="form-group">
                     {% if form.query.errors %}
-                    {{ form.query(class="form-control form-control-lg is-invalid") }}
+                    {{ form.query(class="form-control is-invalid") }}
                     <div class="invalid-feedback">
                         {% for error in form.query.errors %}
                         <span>{{ error }}</span>
                         {% endfor %}
                     </div>
                     {% else %}
-                    {{ form.query(class="form-control form-control-lg") }}
+                    {{ form.query(class="form-control") }}
                     {% endif %}
                     <div class="mt-1">
                         {{ form.sort.label }}
@@ -23,8 +23,8 @@
                         {{ form.sort }}
                     </div>
                     <div class="mt-1">
-                        {{ form.submit(class="btn btn-outline-info") }}
-                        {{ form.clear(class="btn btn-outline-danger") }}
+                        {{ form.submit(class="btn btn-primary") }}
+                        {{ form.clear(class="btn btn-danger") }}
                     </div>
                 </div>
             </fieldset>
@@ -36,7 +36,7 @@
 
     {% for item in items.items %}
 
-    <div class="col-md-3 col-sm-6">
+    <div class="col-md-3 col-sm-12">
         <div class="product-grid">
             <div class="product-image">
                 <a href="#">
@@ -67,16 +67,26 @@
     {% endfor %}
 
 </section>
-{% for page_num in items.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+<ul class="pagination pagination-primary mt-5">
+    {% for page_num in items.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
     {% if page_num %}
         {% if items.page == page_num %}
-            <a href="{{ url_for('items.view_items', page=page_num) }}" class="btn btn-info mb-4">{{ page_num }}</a>
+    <li class="page-item active">
+            <a href="{{ url_for('items.view_items', page=page_num) }}" class="page-link">{{ page_num }}</a>
+    </li>
+
         {% else %}
-            <a href="{{ url_for('items.view_items', page=page_num) }}" class="btn btn-outline-info mb-4">{{ page_num }}</a>
+    <li class="page-item">
+            <a href="{{ url_for('items.view_items', page=page_num) }}" class="page-link">{{ page_num }}</a>
+    </li>
+
         {% endif %}
     {% else %}
         ...
     {% endif %}
 {% endfor %}
+</ul>
+
+
 {% endblock content %}
 

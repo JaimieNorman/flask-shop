@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, flash, url_for, request, redirect
+from flask_login import login_required
 
 from pyapp.items.forms import ItemForm, ItemUpdateForm, SearchForm
 from pyapp.items.utils import save_image
@@ -9,6 +10,7 @@ items = Blueprint('items', __name__)
 
 
 @items.route('/item/new', methods=['GET', 'POST'])
+@login_required
 def add_item():
 
     form = ItemForm()
@@ -28,6 +30,7 @@ def add_item():
 
 
 @items.route('/item/view_all', methods=['GET', 'POST'])
+@login_required
 def view_items():
     form = SearchForm()
     if form.clear.data:
@@ -68,12 +71,14 @@ def view_items():
 
 
 @items.route('/item/<int:item_id>', methods=['GET'])
+@login_required
 def item(item_id):
     item = StoreItem.query.get_or_404(item_id)
     return render_template('item.html', item=item)
 
 
 @items.route('/item/<int:item_id>/update', methods=['GET', 'POST'])
+@login_required
 def update_item(item_id):
     item = StoreItem.query.get_or_404(item_id)
     # if item.author != current_user:

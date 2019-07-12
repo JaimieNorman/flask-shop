@@ -20,7 +20,7 @@ class ItemUpdateForm(FlaskForm):
 
 
 class SearchForm(FlaskForm):
-    query = StringField('Query')
+    query = StringField('Query', render_kw={"placeholder": "Search"})
     submit = SubmitField('Search')
     sort = SelectField(u'Order By', choices=[('name-az', 'Name(A-Z)'), ('name-za', 'Name(Z-A)'), ('price-lh', 'Price(Low to High)'), ('price-hl', 'Price(High to Low)'), ('sale', 'Biggest Sale')])
     clear = SubmitField('Clear Search')
