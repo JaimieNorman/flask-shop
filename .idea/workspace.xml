@@ -3,18 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="72852598-1408-41b1-8001-7c6b6b4460f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyapp/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyapp/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyapp/main/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyapp/main/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyapp/patients/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyapp/patients/forms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyapp/patients/routes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyapp/posts/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyapp/posts/forms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyapp/posts/routes.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyapp/static/material-kit.min.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/pyapp/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/pyapp/templates/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pyapp/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/pyapp/templates/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyapp/users/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/pyapp/users/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyapp/templates/new_post.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyapp/templates/post.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyapp/templates/user_posts.html" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,13 +16,27 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pyapp/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="255">
-              <caret line="15" column="66" lean-forward="true" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
+              <caret line="15" column="66" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -39,8 +47,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pyapp/templates/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
+            <state relative-caret-position="102">
+              <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -61,7 +69,7 @@
         <entry file="file://$PROJECT_DIR$/pyapp/config.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -78,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pyapp/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+            <state relative-caret-position="51">
+              <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -97,7 +105,7 @@
         <entry file="file://$PROJECT_DIR$/pyapp/users/routes.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="197">
-              <caret line="91" column="64" lean-forward="true" selection-start-line="91" selection-start-column="64" selection-end-line="91" selection-end-column="64" />
+              <caret line="91" column="64" selection-start-line="91" selection-start-column="64" selection-end-line="91" selection-end-column="64" />
               <folding>
                 <element signature="e#0#79#0" expanded="true" />
               </folding>
@@ -174,8 +182,8 @@
         <option value="$PROJECT_DIR$/pyapp/__init__.py" />
         <option value="$PROJECT_DIR$/pyapp/main/routes.py" />
         <option value="$PROJECT_DIR$/pyapp/users/routes.py" />
-        <option value="$PROJECT_DIR$/pyapp/templates/home.html" />
         <option value="$PROJECT_DIR$/pyapp/models.py" />
+        <option value="$PROJECT_DIR$/pyapp/templates/home.html" />
         <option value="$PROJECT_DIR$/pyapp/templates/layout.html" />
       </list>
     </option>
@@ -232,6 +240,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="sqlite" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -267,12 +276,12 @@
       <option name="presentableId" value="Default" />
       <updated>1551613166835</updated>
       <workItem from="1557916851866" duration="50000" />
-      <workItem from="1562924354112" duration="902000" />
+      <workItem from="1562924354112" duration="2054000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="952000" />
+    <option name="totallyTimeSpent" value="2104000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -297,7 +306,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Database" order="3" weight="0.32995737" />
       <window_info anchor="right" id="SciView" order="4" />
     </layout>
     <layout-to-restore>
@@ -574,7 +583,7 @@
     <entry file="file://$PROJECT_DIR$/pyapp/config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
         </state>
       </provider>
     </entry>
@@ -588,17 +597,10 @@
     <entry file="file://$PROJECT_DIR$/pyapp/users/routes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
-          <caret line="91" column="64" lean-forward="true" selection-start-line="91" selection-start-column="64" selection-end-line="91" selection-end-column="64" />
+          <caret line="91" column="64" selection-start-line="91" selection-start-column="64" selection-end-line="91" selection-end-column="64" />
           <folding>
             <element signature="e#0#79#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pyapp/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -612,17 +614,24 @@
     <entry file="file://$PROJECT_DIR$/pyapp/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="15" column="66" lean-forward="true" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
+          <caret line="15" column="66" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pyapp/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pyapp/templates/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="64" column="18" selection-start-line="64" selection-start-column="18" selection-end-line="64" selection-end-column="18" />
+        <state relative-caret-position="102">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
         </state>
       </provider>
     </entry>
