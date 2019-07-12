@@ -1,28 +1,5 @@
 {% extends "layout.html" %}
-{% block messages %}
-<!--<div class="content-section">-->
-<!--    <form method="POST" action="">-->
-<!--        {{ form.hidden_tag() }}-->
-<!--        <fieldset class="form-group">-->
-<!--            <legend class="border-bottom mb-4">Log In</legend>-->
-<!--            <div class="form-check">-->
-<!--                {{ form.remember(class="form-check-input") }}-->
-<!--                {{ form.remember.label(class="form-check-label") }}-->
-<!--            </div>-->
-<!--        </fieldset>-->
-<!--        <div class="form-group">-->
-
-<!--            <small class="text-muted ml-2">-->
-<!--            </small>-->
-<!--        </div>-->
-
-<!--    </form>-->
-<!--</div>-->
-<!--<div class="border-top pt-3">-->
-<!--    <small class="text-muted">-->
-<!--        Don't have an Account? <a href="{{ url_for('users.register') }}" class="ml-2"> Sign Up </a>-->
-<!--    </small>-->
-<!--</div>-->
+{% block content1 %}
 <div class="login-page sidebar-collapse">
         <div class="content">
             <div class="container">
@@ -39,7 +16,7 @@
                                 <div class="input-group no-border input-lg">
                                     <div class="input-group-prepend">
                                     <span class="input-group-text">
-                                        <i class="now-ui-icons users_circle-08"></i>
+                                        <i class="fa fa-at"></i>
                                     </span>
                                     </div>
                                     {% if form.email.errors %}
@@ -56,7 +33,7 @@
                                 <div class="input-group no-border input-lg">
                                     <div class="input-group-prepend">
                                 <span class="input-group-text">
-                                    <i class="now-ui-icons text_caps-small"></i>
+                                    <i class="fa fa-key"></i>
                                 </span>
                                     </div>
                                     {% if form.password.errors %}
@@ -90,4 +67,4 @@
             </div>
         </div>
     </div>
-{% endblock messages %}
+{% endblock content1 %}

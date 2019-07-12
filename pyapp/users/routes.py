@@ -16,7 +16,12 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        user = User(email=form.email.data,
+                    first_name=form.first_name.data,
+                    last_name=form.last_name.data,
+                    address=form.address.data,
+                    phone=form.phone.data,
+                    password=hashed_password)
         db.session.add(user)
         db.session.commit()
         flash('Account Successfully Created!', 'success')
@@ -57,13 +62,11 @@ def account():
         if form.image.data:
             image_file = save_image(form.image.data)
             current_user.image_file = image_file
-        current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
         flash('Account successfully updated', 'success')
         return redirect(url_for('users.account'))
     elif request.method == 'GET':
-        form.username.data = current_user.username
         form.email.data = current_user.email
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file, form=form)
