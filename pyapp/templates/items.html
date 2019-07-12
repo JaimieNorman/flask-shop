@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="row text-center mb-3">
+    <div class="col">
+        <form action="" method="POST" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <div class="form-group">
+                    {% if form.query.errors %}
+                    {{ form.query(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.query.errors %}
+                        <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    {{ form.query(class="form-control form-control-lg") }}
+                    {% endif %}
+                    <div class="mt-1">
+                        {{ form.sort.label }}
+                        <br>
+                        {{ form.sort }}
+                    </div>
+                    <div class="mt-1">
+                        {{ form.submit(class="btn btn-outline-info") }}
+                        {{ form.clear(class="btn btn-outline-danger") }}
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+<section class="row">
+
+    {% for item in items.items %}
+
+    <div class="col-md-3 col-sm-6">
+        <div class="product-grid">
+            <div class="product-image">
+                <a href="#">
+                    <img class="pic-1" src="{{ url_for('static', filename='item_pics/' + item.image) }}">
+                </a>
+                {% if item.sale != 0 %}
+                    <span class="product-new-label">Sale</span>
+                    <span class="product-discount-label">{{ item.sale }}%</span>
+                {% endif %}
+            </div>
+            <div class="product-content">
+                <h3 class="title"><a href="{{ url_for('items.item', item_id=item.id) }}">{{ item.name }}</a></h3>
+                {% if item.sale == 0 %}
+                    <div class="price">R{{ item.price|round(2) }}
+                    </div>
+                <br>
+                {% else %}
+                    <div class="price">R{{ (item.price|float - (item.sale / 100) * item.price|float)|round(2)}}
+                        <br>
+                        <span>R{{ item.price|round(2) }}</span>
+                    </div>
+                {% endif %}
+                <a class="add-to-cart" href="">+ Add To Cart</a>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+</section>
+{% for page_num in items.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+    {% if page_num %}
+        {% if items.page == page_num %}
+            <a href="{{ url_for('items.view_items', page=page_num) }}" class="btn btn-info mb-4">{{ page_num }}</a>
+        {% else %}
+            <a href="{{ url_for('items.view_items', page=page_num) }}" class="btn btn-outline-info mb-4">{{ page_num }}</a>
+        {% endif %}
+    {% else %}
+        ...
+    {% endif %}
+{% endfor %}
+{% endblock content %}
+

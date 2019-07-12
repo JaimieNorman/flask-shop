@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="row">
+        <div class="col text-center">
+            <img src="{{ url_for('static', filename='item_pics/' +item.image) }}" alt="item_pic">
+            <h3>{{item.name}}</h3>
+            <div>
+                <p>Normal Price: R{{item.price|round(2)}}</p>
+                {% if item.sale > 0 %}
+                    <small>Sale Price: R{{(item.price|float - (item.sale / 100) * item.price|float)|round(2)}}</small>
+                {% endif %}
+            </div>
+            <br>
+            <a href="#" class="btn btn-danger btn-sm">Delete</a>
+            <a href="{{ url_for('items.update_item', item_id=item.id) }}"  class="btn btn-info btn-sm">Update</a>
+        </div>
+    </div>
+{% endblock content %}
