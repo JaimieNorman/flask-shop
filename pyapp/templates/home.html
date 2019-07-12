@@ -1,4 +1,14 @@
 {% extends "layout.html" %}
 {% block content %}
-
+<div class="page-header clear-filter" filter-color="orange">
+      <div class="page-header-image" data-parallax="true" style="background-image: url('../static/img/header.jpg'); transform: translate3d(0px, 0px, 0px);">
+      </div>
+      <div class="container">
+        <div class="content-center brand">
+          <img class="n-logo" src="{{ url_for('static', filename='img/now-logo.png') }}" alt="">
+          <h1 class="h1-seo">Flask Shop</h1>
+          <h3>No proper name yet</h3>
+        </div>
+      </div>
+    </div>
 {% endblock content %}
