@@ -24,7 +24,7 @@
 <nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent " color-on-scroll="400">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="https://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip" title="Designed by Invision. Coded by Creative Tim" data-placement="bottom" target="_blank">
+            <a class="navbar-brand" href="{{ url_for('main.home') }}" data-placement="bottom">
                 Flask Shop
             </a>
             <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,37 +34,57 @@
             </button>
         </div>
         <!--        <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="{{ url_for('static', filename='img/blurred-image-1.jpg') }}">-->
-        <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="../static/img/blurred-img.jpg">
+        <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="{{ url_for('static', filename='img/blurred-img.jpg') }}">
             <ul class="navbar-nav">
 
                 {% if current_user.is_authenticated %}
                 <li class="nav-item">
                     <a href="{{ url_for('users.logout') }}" class="nav-link">Logout</a>
                 </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">Store</a>
+                </li>
+
                 {% else %}
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink1" data-toggle="dropdown">
-                        <i class="far fa-user fa-fw"></i>
-                        <p>Account</p>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users.login') }}">
+                        <i class="fa fa-sign-in-alt"></i> Login
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink1">
-                        <a class="dropdown-item" href="{{ url_for('users.login') }}">
-                            <i class="fa fa-sign-in-alt"></i> Login
-                        </a>
-                        <a class="dropdown-item" href="{{ url_for('users.register') }}">
-                            <i class="fa fa-user-plus"></i> Register
-                        </a>
-                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('users.register') }}">
+                        <i class="fa fa-user-plus"></i> Register
+                    </a>
                 </li>
                 {% endif %}
             </ul>
         </div>
     </div>
 </nav>
-<div class="wrapper">
-    {% block content %}
-    {% endblock content %}
+
+
+<div class="page-header clear-filter" filter-color="orange">
+    <div class="page-header-image" data-parallax="true" style="background-image: url('../static/img/header.jpg')">
+    </div>
+    <div class="container" style="margin-top: 100px">
+        {% with messages=get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+                {{ message }}
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <div class="container">
+            {% block messages %} {% endblock %}
+        </div>
+    </div>
 </div>
+{% block content %}{% endblock %}
 
 <!--<header class="site-header">-->
 <!--    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">-->
@@ -96,20 +116,7 @@
 <!--</header>-->
 
 <!--<main role="main" class="container">-->
-<!--    <div class="row">-->
-<!--        <div class="col-md-12">-->
-<!--            {% with messages=get_flashed_messages(with_categories=true) %}-->
-<!--            {% if messages %}-->
-<!--            {% for category, message in messages %}-->
-<!--            <div class="alert alert-{{ category }}">-->
-<!--                {{ message }}-->
-<!--            </div>-->
-<!--            {% endfor %}-->
-<!--            {% endif %}-->
-<!--            {% endwith %}-->
 
-<!--        </div>-->
-<!--    </div>-->
 <!--</main>-->
 
 <script src="{{ url_for('static', filename='js/core/jquery.min.js') }}" type="text/javascript"></script>

@@ -1,55 +1,93 @@
 {% extends "layout.html" %}
-{% block content %}
-<div class="content-section">
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        <fieldset class="form-group">
-            <legend class="border-bottom mb-4">Log In</legend>
-            <div class="form-group">
-                {{ form.email.label(class="form-control-label") }}
+{% block messages %}
+<!--<div class="content-section">-->
+<!--    <form method="POST" action="">-->
+<!--        {{ form.hidden_tag() }}-->
+<!--        <fieldset class="form-group">-->
+<!--            <legend class="border-bottom mb-4">Log In</legend>-->
+<!--            <div class="form-check">-->
+<!--                {{ form.remember(class="form-check-input") }}-->
+<!--                {{ form.remember.label(class="form-check-label") }}-->
+<!--            </div>-->
+<!--        </fieldset>-->
+<!--        <div class="form-group">-->
 
-                {% if form.email.errors %}
-                {{ form.email(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.email.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-                {% else %}
-                {{ form.email(class="form-control form-control-lg") }}
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.password.label(class="form-control-label") }}
+<!--            <small class="text-muted ml-2">-->
+<!--            </small>-->
+<!--        </div>-->
 
-                {% if form.password.errors %}
-                {{ form.password(class="form-control form-control-lg is-invalid") }}
-                <div class="invalid-feedback">
-                    {% for error in form.password.errors %}
-                    <span>{{ error }}</span>
-                    {% endfor %}
+<!--    </form>-->
+<!--</div>-->
+<!--<div class="border-top pt-3">-->
+<!--    <small class="text-muted">-->
+<!--        Don't have an Account? <a href="{{ url_for('users.register') }}" class="ml-2"> Sign Up </a>-->
+<!--    </small>-->
+<!--</div>-->
+<div class="login-page sidebar-collapse">
+        <div class="content">
+            <div class="container">
+                <div class="col-md-4 ml-auto mr-auto">
+                    <div class="card card-login card-plain">
+                        <form class="form" method="POST" action="">
+                                    {{ form.hidden_tag() }}
+                            <div class="card-header text-center">
+                                <div class="logo-container">
+                                    <img src="{{ url_for('static', filename='img/now-logo.png') }}" alt="">
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="input-group no-border input-lg">
+                                    <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="now-ui-icons users_circle-08"></i>
+                                    </span>
+                                    </div>
+                                    {% if form.email.errors %}
+                                    {{ form.email(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.email.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.email(class="form-control") }}
+                                    {% endif %}
+                                </div>
+                                <div class="input-group no-border input-lg">
+                                    <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="now-ui-icons text_caps-small"></i>
+                                </span>
+                                    </div>
+                                    {% if form.password.errors %}
+                                    {{ form.password(class="form-control is-invalid") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.password.errors %}
+                                        <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% else %}
+                                    {{ form.password(class="form-control") }}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="card-footer text-center">
+                                {{ form.submit(class="btn btn-primary btn-round btn-lg btn-block") }}
+                                <div class="pull-left">
+                                    <h6>
+                                        <a href="{{ url_for('users.register') }}" class="link">Create Account</a>
+                                    </h6>
+                                </div>
+                                <div class="pull-right">
+                                    <h6>
+                                        <a href="{{ url_for('users.reset_request') }}" class="link">Forgot Password?</a>
+                                    </h6>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                {% else %}
-                {{ form.password(class="form-control form-control-lg") }}
-                {% endif %}
             </div>
-            <div class="form-check">
-                {{ form.remember(class="form-check-input") }}
-                {{ form.remember.label(class="form-check-label") }}
-            </div>
-        </fieldset>
-        <div class="form-group">
-            {{ form.submit(class="btn btn-outline-info") }}
-            <small class="text-muted ml-2">
-                <a href="{{ url_for('users.reset_request') }}">Forgot Password?</a>
-            </small>
         </div>
-
-    </form>
-</div>
-<div class="border-top pt-3">
-    <small class="text-muted">
-        Don't have an Account? <a href="{{ url_for('users.register') }}" class="ml-2"> Sign Up </a>
-    </small>
-</div>
-{% endblock content %}
+    </div>
+{% endblock messages %}
