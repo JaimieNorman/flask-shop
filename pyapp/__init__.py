@@ -28,18 +28,14 @@ def create_app(config_class=Config):
 # Blueprint registration
 
     from pyapp.users.routes import users
-    from pyapp.posts.routes import posts
     from pyapp.main.routes import main
     from pyapp.errors.handlers import errors
     from pyapp.items.routes import items
-    from pyapp.patients.routes import patients
 
     app.register_blueprint(users)
-    app.register_blueprint(posts)
     app.register_blueprint(main)
     app.register_blueprint(errors)
     app.register_blueprint(items)
-    app.register_blueprint(patients)
 
     return app
 

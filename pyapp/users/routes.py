@@ -2,7 +2,7 @@ from flask import Blueprint, url_for, redirect, flash, render_template, request
 from flask_login import current_user, login_user, logout_user, login_required
 
 from pyapp import db, bcrypt
-from pyapp.models import User, Post
+from pyapp.models import User
 from pyapp.users.forms import RegistrationForm, LoginForm, UpdateDetailsForm, RequestResetForm, ResetPasswordForm
 from pyapp.users.utils import save_image, send_reset_email
 
@@ -16,7 +16,12 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        user = User(email=form.email.data,
+                    first_name=form.first_name.data,
+                    last_name=form.last_name.data,
+                    address=form.address.data,
+                    phone=form.phone.data,
+                    password=hashed_password)
         db.session.add(user)
         db.session.commit()
         flash('Account Successfully Created!', 'success')
@@ -57,13 +62,11 @@ def account():
         if form.image.data:
             image_file = save_image(form.image.data)
             current_user.image_file = image_file
-        current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
         flash('Account successfully updated', 'success')
         return redirect(url_for('users.account'))
     elif request.method == 'GET':
-        form.username.data = current_user.username
         form.email.data = current_user.email
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
     return render_template('account.html', title='Account', image_file=image_file, form=form)
@@ -73,8 +76,7 @@ def account():
 def user_posts(username):
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=username).first_or_404()
-    posts = Post.query.filter_by(author=user).order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
-    return render_template('user_posts.html', posts=posts, user=user)
+    return render_template('user_posts.html', user=user)
 
 
 @users.route("/reset_password", methods=['GET', 'POST'])

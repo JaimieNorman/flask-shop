@@ -8,18 +8,15 @@ from pyapp.models import User
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators=[
-        DataRequired(), Length(min=2, max=32)])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()], render_kw={"placeholder": "Email"})
+    first_name = StringField('First Name', validators=[DataRequired()], render_kw={"placeholder": "First Name"})
+    last_name = StringField('Last Name', validators=[DataRequired()], render_kw={"placeholder": "Last Name"})
+    address = StringField('Address', validators=[DataRequired()], render_kw={"placeholder": "Address"})
+    phone = StringField('Phone', validators=[DataRequired()], render_kw={"placeholder": "Contact Number"})
+    password = PasswordField('Password', validators=[DataRequired()], render_kw={"placeholder": "Password"})
     passwordConfirm = PasswordField('Confirm Password', validators=[
-        DataRequired(), EqualTo('password')])
+        DataRequired(), EqualTo('password')], render_kw={"placeholder": "Confirm Password"})
     submit = SubmitField('Sign Up')
-
-    def validate_username(self, username):
-        user = User.query.filter_by(username=username.data).first()
-        if user:
-            raise ValidationError('Username already taken!')
 
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
@@ -28,8 +25,8 @@ class RegistrationForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()], render_kw={"placeholder": "Email"})
+    password = PasswordField('Password', validators=[DataRequired()], render_kw={"placeholder": "Password"})
     remember = BooleanField('Remember')
     submit = SubmitField('Sign In')
 
@@ -40,12 +37,6 @@ class UpdateDetailsForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     image = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Update')
-
-    def validate_username(self, username):
-        if username.data != current_user.username:
-            user = User.query.filter_by(username=username.data).first()
-            if user:
-                raise ValidationError('Username already taken!')
 
     def validate_email(self, email):
         if email.data != current_user.email:
