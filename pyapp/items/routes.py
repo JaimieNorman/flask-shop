@@ -26,7 +26,7 @@ def add_item():
             db.session.add(item)
             db.session.commit()
             flash('Item successfully added!', 'success')
-    return render_template('add_item.html', form=form)
+    return render_template('add_item.html', form=form, title="Add Item")
 
 
 @items.route('/item/view_all', methods=['GET', 'POST'])

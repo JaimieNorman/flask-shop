@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-
+from flask_login import login_required
 
 main = Blueprint('main', __name__)
 
@@ -7,10 +7,10 @@ main = Blueprint('main', __name__)
 @main.route("/")
 @main.route("/home")
 def home():
-    page = request.args.get('page', 1, type=int)
     return render_template('home.html')
 
 
-@main.route("/about")
-def about():
-    return render_template('about.html', title='About')
+@main.route("/dashboard")
+@login_required
+def dashboard():
+    return render_template('dashboard-main.html', title='Dashboard')
